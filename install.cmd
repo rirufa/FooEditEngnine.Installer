@@ -13,6 +13,11 @@ pushd ..\Windows\FooTextBox
 copy bin\%BUILD_TYPE%\*.nupkg "%BATCH_FILE_FOLDER%dist"
 popd
 
+pushd ..\DotNetTextStore
+"%BUILD_PATH%\msbuild" -t:pack -p:Configuration=%BUILD_TYPE%"
+copy bin\%BUILD_TYPE%\*.nupkg "%BATCH_FILE_FOLDER%dist"
+popd
+
 pushd ..\WPF\FooTextBox
 "%BUILD_PATH%\msbuild" -t:pack -p:Configuration=%BUILD_TYPE%"
 copy bin\%BUILD_TYPE%\*.nupkg "%BATCH_FILE_FOLDER%dist"
