@@ -24,8 +24,8 @@ copy bin\%BUILD_TYPE%\*.nupkg "%BATCH_FILE_FOLDER%dist"
 popd
 
 pushd ..\UWP\FooTextBox
-"%IDE_PATH%\devenv" /build "%BUILD_TYPE%|%CPU_TYPE%" ..\UWP.sln
-nuget pack FooEditEngine.UWP.nuspec -Prop Configuration=%BUILD_TYPE% -Suffix %BUILD_TYPE% -Symbols -OutputDirectory "%BATCH_FILE_FOLDER%\dist"
+"%BUILD_PATH%\msbuild" -t:pack -p:Configuration=%BUILD_TYPE%"
+copy bin\%BUILD_TYPE%\*.nupkg "%BATCH_FILE_FOLDER%dist"
 popd
 
 :copy_dist
